@@ -4,7 +4,9 @@
   "description": "A Discord bot for getting NFT data from OpenSea",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "pm2 start pm2.config.js",
+    "stop": "pm2 stop pm2.config.js",
+    "restart": "pm2 restart pm2.config.js"
   },
   "author": "lucid-eleven",
   "license": "MIT",
