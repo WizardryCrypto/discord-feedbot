@@ -1,23 +1,18 @@
 // https://pm2.keymetrics.io/docs/usage/application-declaration/
 const fs = require("fs");
 const config = "./.env";
-const wcData = "../discord-data/feedbot";
-let outLogFile;
-let errorLogFile;
+const discordData = "../discord-data/feedbot";
+const outLogFile = "./logs/pm2_output.log";
+const errorLogFile = "./logs/pm2_error.log";
 
 const copyConfig = async () => {
-	fs.copyFile(`${wcData}/.env`, config, (err) => {
+	fs.copyFile(`${discordData}/.env`, config, (err) => {
 		if (err) throw err;
 	});
 };
 
-if (fs.existsSync(wcData)) {
+if (fs.existsSync(discordData)) {
 	copyConfig();
-	outLogFile = `${wcData}/logs/pm2_output.log`;
-	errorLogFile = `${wcData}/logs/pm2_error.log`;
-} else {
-	outLogFile = "./pm2_output.log";
-	errorLogFile = "./pm2_error.log";
 }
 
 module.exports = {
